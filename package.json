@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "validate": "npm-run-all --parallel lint test",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,16 +19,28 @@
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.16.0",
     "file-loader": "^1.1.6",
     "ghooks": "^2.0.2",
     "jest": "^22.1.4",
     "jest-cli": "^22.1.4",
     "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.0.10",
     "proptypes": "^1.1.0",
     "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
     "webpack-dev-server": "^2.11.1"
-  }
+  },
+  "nyc": {
+    "check-caoverage": true,
+    "branches": 100,
+    "functions:": 100,
+    "lines": 100,
+    "statements": 100,
+    "reporter": ["text", "lcov"]
+  },
+
+  "config": { "ghooks": { "pre-commit": "npm run validate" } }
 }
