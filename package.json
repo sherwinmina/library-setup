@@ -6,6 +6,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel --copyfiles --out-dir dist src --ignore *test.js src",
+    "build:umd": "webpack --output-filename index.umd.js",
+    "build:umd.min": "webpack --output-filename index.umd.min.js -p",
     "lint": "eslint .",
     "validate": "npm-run-all --parallel lint test",
     "test": "cross-env NODE_ENV=test nyc jest"
@@ -17,9 +19,7 @@
     "react-dom": "^16.2.0",
     "webpack": "^3.10.0"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -57,18 +57,11 @@
     "functions:": 100,
     "lines": 100,
     "statements": 100,
-    "reporter": [
-      "text",
-      "lcov"
-    ],
+    "reporter": ["text", "lcov"],
     "instrument": false,
     "sourceMap": false,
-    "require": [
-      "babel-register"
-    ],
-    "include": [
-      "src"
-    ]
+    "require": ["babel-register"],
+    "include": ["src"]
   },
   "config": {
     "ghooks": {
