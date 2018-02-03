@@ -10,7 +10,8 @@
     "build:umd.min": "webpack --output-filename index.umd.min.js -p",
     "lint": "eslint .",
     "validate": "npm-run-all --parallel lint test",
-    "test": "cross-env NODE_ENV=test nyc jest"
+    "test": "cross-env NODE_ENV=test nyc jest",
+    "report-coverage": "cat ./coverage/lcov.info | codecov"
   },
   "author": "",
   "license": "ISC",
